@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PrintMe from './print'
-// import $ from 'jquery';
+import PrintMe from './print';
 
 function App(){
     return (

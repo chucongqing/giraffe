@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.js';
 
+
 import _ from "lodash"
-import printMe from './print.js'
+import printMe from 'app/print.js'
 function component() {
     const element = document.createElement('div');
     const btn = document.createElement('button')
