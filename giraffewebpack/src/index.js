@@ -1,3 +1,7 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App.js';
+
 import _ from "lodash"
 import printMe from './print.js'
 function component() {

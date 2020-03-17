@@ -5,7 +5,7 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 module.exports = {
   mode:'development',
   entry: {
-     app: './src/index.js',
+     app: './src/App.tsx',
     print:'./src/print.js',
 
   },
@@ -21,6 +21,12 @@ module.exports = {
   module:{
       rules:[
           {
+              test:/\.(js|jsx)$/,
+              exclude:/(node_modules|bower_components)/,
+              loader:"babel-loader",
+              options:{presets:["@babel/env"]}
+          },
+          {
               test:/\.css$/,
               use:[
                   {loader:'style-loader'},
@@ -30,7 +36,7 @@ module.exports = {
               ]
           },
           {
-             test:/\.ts$/,
+             test:/\.(ts|tsx)$/,
              use:'ts-loader'
           },
           {
@@ -41,10 +47,11 @@ module.exports = {
           }
       ]
   },
+  resolve:{extensions:["*",".js",".jsx",".ts",".tsx"]},
   plugins:[
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
-          title:'Out Management',
+          title:'Out Management1',
       }),
   ],
 };
