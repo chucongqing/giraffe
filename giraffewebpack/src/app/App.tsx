@@ -1,16 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PrintMe from './print';
+import Redux from 'redux'
+import DataFecthApp from './datafecth';
+
 
 function App(){
     return (
         <div>
-            <h1>This is a React App!</h1>
+            <DataFecthApp></DataFecthApp>
         </div>
     );
 }
-console.log("App init")
-console.log('> ' + PrintMe());
+
 const root = document.createElement("root")
 root.id = "react-root"
 document.body.appendChild(root);

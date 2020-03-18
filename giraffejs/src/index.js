@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Clock, Btn,RenderingExample} from 'leg';
+// import {HookTotal}
 import Frontleg from 'frontleg'
 import './index.css';
+import { HookTotal } from 'hookleg';
 
 
 
@@ -389,14 +391,16 @@ class Main extends  React.Component {
     render() {
         return (
             <div>
-                <Game ></Game>
+                {/* <Game ></Game>
                <Frontleg> </Frontleg>
                 <Clock></Clock>
                 <EssayForm></EssayForm>
                 <NameForm></NameForm>
                 <FlavorForm></FlavorForm>
                 <Reservation></Reservation>
-                <Calculator></Calculator>
+                <Calculator></Calculator> */}
+
+                <HookTotal></HookTotal>
             </div>
         );
     }

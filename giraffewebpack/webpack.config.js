@@ -51,7 +51,7 @@ module.exports = {
   plugins:[
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
-          title:'React App',
+          title:'DouDou DID List',
       }),
   ],
 };
