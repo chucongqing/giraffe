@@ -4,8 +4,9 @@
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext"
+      "es2019"
     ],
+    "outDir": "tsbuild",
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -21,6 +22,6 @@
     "jsx": "react"
   },
   "include": [
-    "src/**/*"
+    "src"
   ]
 }

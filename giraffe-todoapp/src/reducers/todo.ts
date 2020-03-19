@@ -1,5 +1,5 @@
-import {ADD_TODO, TOGGLE_TODO, TodoActionTypes} from 'types'
-const todos = (state :any[], action : TodoActionTypes ) =>{
+import {ADD_TODO, TOGGLE_TODO, TodoActionTypes, TodoData} from 'types'
+const todos = (state : TodoData[], action : TodoActionTypes ) :TodoData[] =>{
     switch(action.type) {
         case ADD_TODO : {
             return [...state,
@@ -12,7 +12,7 @@ const todos = (state :any[], action : TodoActionTypes ) =>{
         }
         case TOGGLE_TODO :{
             return state.map( todo=>{
-                todo.id === action.id ? {
+               return todo.id === action.id ? {
                     ...todo,
                     completed : !todo.completed
                 } : todo
