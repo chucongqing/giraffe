@@ -1,6 +1,9 @@
-import { combineReducers } from 'redux'
-import todos from './todo'
+import { combineReducers, AnyAction } from 'redux'
+// import todos from './todo'
 import vfilter from './visibilityFilter'
+import todoReducer from 'features/todos/todoSlice'
+import filterReducer from 'features/todos/todoSlice'
+
 
 // export default combineReducers({
 //     todos,
@@ -16,9 +19,26 @@ import vfilter from './visibilityFilter'
 //     }
 // }
 
-const rootReducer = combineReducers({
-    todos : todos,
-    vfilter: vfilter
-})
+// const rootReducer = combineReducers({
+//     todos : todos,
+//     vfilter: vfilter
+// })
 
-export default rootReducer
+const addedReducers = {}
+
+export const addReducer = (newReducers : any) => {
+    Object.assign(addedReducers, newReducers);
+}
+
+// export const createRootReducer = ()=>{
+//     const appReducer = 
+
+//     return (state : any, action: AnyAction) : any =>{
+//         return appReducer(state, action);
+//     }
+// }
+
+export default combineReducers({
+    ...todoReducer,
+    ...filterReducer,
+})

@@ -3,10 +3,10 @@ import Todo from './todo'
 import { TodoData, TodoActionTypes } from 'types'
 import {RootState} from 'store/store'
 import { connect ,ConnectedProps } from 'react-redux';
-import { toggleTodo} from 'actions'
+import { addTodo, toggleTodo} from 'features/todos/todoSlice'
 
 
-const mapStateToProps   = (state : RootState) => {
+const mapStateToProps   = (state : RootState) : {todos: TodoData[]} => {
     const {todos} = state;
     return { todos : todos}
 }
