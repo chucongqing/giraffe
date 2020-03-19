@@ -20,7 +20,7 @@ export interface ToggleTodoAction {
 }
 
 export type TodoActionTypes = AddTodoAction | ToggleTodoAction;
-export type TotalAction = AddTodoAction & ToggleTodoAction & SetVisibilityFilterAction
+export type TotalAction = AddTodoAction | ToggleTodoAction | SetVisibilityFilterAction
 export const VisibilityFilters = {
     SHOW_ALL : 'SHOW_ALL',
     SHOW_COMPLETED: 'SHOW_COMPLETED',

@@ -1,16 +1,27 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { connect, useDispatch, ConnectedProps } from 'react-redux'
 import { addTodo } from 'actions'
 import { TodoActionTypes } from 'types';
+import { RootState } from 'store/store';
 
-type Props = {
-    dispatch :  (x:TodoActionTypes)=>void
+
+
+const mapState = (state : RootState) => ({})
+const mapDispatch = {
+    dispatch : addTodo
 }
 
+const connector = connect(mapState, mapDispatch)
+
+// The inferred type will look like:
+// {isOn: boolean, toggleOn: () => void}
+type PropsFromRedux = ConnectedProps<typeof connector>
+
+type Props = PropsFromRedux 
 
 let AddTodo : React.FC<Props> = (props) =>{
     let input : HTMLInputElement | null = null;
-
+    
     return (
         <div>
             <form
@@ -19,7 +30,7 @@ let AddTodo : React.FC<Props> = (props) =>{
                     if( !input?.value.trim()){
                         return;
                     }
-                    props.dispatch(addTodo(input.value))
+                    props.dispatch(input.value)
                 }}
 
             >
@@ -30,4 +41,5 @@ let AddTodo : React.FC<Props> = (props) =>{
     )
 }
 
-export default connect()(AddTodo)
+
+export default connector(AddTodo)

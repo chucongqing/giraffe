@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux'
 import todos from './todo'
 import vfilter from './visibilityFilter'
-import { StoreState, TotalAction} from 'types'
 
 // export default combineReducers({
 //     todos,
@@ -10,7 +9,7 @@ import { StoreState, TotalAction} from 'types'
 
 // export default function todoApp (
 //     state: StoreState, 
-//     action : TotalAction ) : StoreState {
+//     action : TotalAction) : StoreState {
 //     return {
 //         todos: todos(state.todos, action),
 //         vfilter : vfilter(state.vfilter, action)

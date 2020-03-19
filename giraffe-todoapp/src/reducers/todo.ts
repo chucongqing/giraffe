@@ -1,5 +1,5 @@
-import {ADD_TODO, TOGGLE_TODO, TodoActionTypes, TodoData} from 'types'
-const todos = (state : TodoData[], action : TodoActionTypes ) :TodoData[] =>{
+import {ADD_TODO, TOGGLE_TODO, TotalAction, TodoData} from 'types'
+const todos = (state : TodoData[] = Array<TodoData>(), action : TotalAction ) :TodoData[] =>{
     switch(action.type) {
         case ADD_TODO : {
             return [...state,

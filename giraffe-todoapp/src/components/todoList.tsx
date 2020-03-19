@@ -1,22 +1,41 @@
 import React from 'react'
 import Todo from './todo'
-import { TodoData } from 'types'
+import { TodoData, TodoActionTypes } from 'types'
+import {RootState} from 'store/store'
+import { connect ,ConnectedProps } from 'react-redux';
+import { toggleTodo} from 'actions'
 
-type TodoListProps = {
-    todos : TodoData[],
-    toogleTodo : (id : number) => void
+
+const mapStateToProps   = (state : RootState) => {
+    const {todos} = state;
+    return { todos : todos}
 }
-const TodoList  = (props : TodoListProps) =>{
+
+const mapDispatch = {
+    toggleTodo : toggleTodo
+}
+
+const connector = connect(mapStateToProps, mapDispatch)
+
+// The inferred type will look like:
+// {isOn: boolean, toggleOn: () => void}
+type PropsFromRedux = ConnectedProps<typeof connector>
+
+// type Props = PropsFromRedux 
+
+const TodoList  = (props : PropsFromRedux) =>{
 
     return (
         <ul>
         {props.todos.map(todo    => (
             <Todo key={todo.id} {...todo}
-                onClick={()=> props.toogleTodo(todo.id)}
+                onClick={()=> props.toggleTodo(todo.id)}
             ></Todo>    
         ))}
         </ul>
     )
 }
 
-export default TodoList;
+
+
+export default connector(TodoList);
