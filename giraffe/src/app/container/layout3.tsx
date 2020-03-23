@@ -7,6 +7,7 @@ import {getBarChart, ChartType} from './charts'
 import BarChartWrapped from 'app/components/charts/bar-chart';
 import LineChart from 'app/components/charts/line-chart';
 import LineRealtime from 'app/components/charts/realtime-line-chart';
+import G2PlotBaseChart from 'app/components/g2plot/base-chart';
 
 
 
@@ -70,6 +71,11 @@ function Layout3  (props : Props ) {
                 case ChartType.Pie :
                     ele = (
                         <LineRealtime key={lo.i} height={lo.h * props.rowHeight}></LineRealtime>
+                    )
+                    break;
+                case ChartType.G2Bar:
+                    ele = (
+                        <G2PlotBaseChart></G2PlotBaseChart>
                     )
                     break;
                 default:
@@ -141,6 +147,7 @@ function Layout3  (props : Props ) {
         <Button type="primary" style={{'marginRight':'7px'}} onClick={()=> addChart(ChartType.Bar) }>添加柱状图</Button>
         <Button type="primary" style={{'marginRight':'7px'}} onClick={()=>addChart(ChartType.Line)}> 添加折线图</Button>
         <Button type="primary" style={{'marginRight':'7px'}} onClick={()=>addChart(ChartType.Pie)}>添加饼图</Button>
+        <Button type="primary" style={{'marginRight':'7px'}} onClick={()=>addChart(ChartType.G2Bar)}>添加G2Bar</Button>
       </Header>
 
 

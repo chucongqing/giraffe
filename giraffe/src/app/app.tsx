@@ -8,6 +8,7 @@ import UserInfoComp from 'app/components/userInfo/userInfo'
 import ZChart from './components/charts/zchart'
 import MyGrid from './container/layout'
 import Layout3 from 'app/container/layout3'
+import G2PlotBaseChart from './components/g2plot/base-chart'
 
 const GiraffeApp = ()=>{
  
@@ -16,6 +17,7 @@ const GiraffeApp = ()=>{
             {/* <UserInfoComp></UserInfoComp> */}
             {/* { <MyGrid></MyGrid> } */}
             <Layout3></Layout3>
+            {/* <G2PlotBaseChart></G2PlotBaseChart> */}
         </Provider>
         
     )

@@ -4,7 +4,8 @@ import { Chart, Geom, Axis, Tooltip, Legend, Coord } from 'bizcharts';
 export enum ChartType {
     Bar = 'Bar',
     Line = 'Line',
-    Pie = 'Pie'
+    Pie = 'Pie',
+    G2Bar = 'G2Bar'
 }
 
 
