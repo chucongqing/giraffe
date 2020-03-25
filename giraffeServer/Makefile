@@ -11,7 +11,7 @@ build: clean
 	$(GOBUILD)  -o $(BINPATH)$(BINARY_NAME)   ./pkg/cmd/server
 
 run:
-	${GOCMD} run -o $(BINPATH)$(BINARY_NAME)  ./pkg/cmd/server
+	${GOCMD} run   ./pkg/cmd/server
 
 clean:
 	@echo clean 

@@ -27,5 +27,8 @@ func main() {
 		c.String(http.StatusOK, "%s is %s", name, role)
 	})
 
+	// Static files
+	// r.Static("/static", "../public/static")
+	r.StaticFS("/static", http.Dir("../public"))
 	r.Run()
 }
