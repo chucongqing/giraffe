@@ -8,7 +8,7 @@ BINPATH=./bin/
 BINARY_NAME=giraffeServer.exe
 
 build: clean
-	$(GOBUILD)  -o $(BINPATH)$(BINARY_NAME)   ./pkg/cmd/server
+	$(GOBUILD)  -o $(BINPATH)$(BINARY_NAME)  ./pkg/cmd/server
 
 run:
 	${GOCMD} run   ./pkg/cmd/server

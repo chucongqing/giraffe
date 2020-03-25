@@ -1,12 +1,16 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+
+	"giraffe/pkg/api"
 )
 
 func main() {
+	fmt.Println("> " + api.Func0())
 	r := gin.Default()
 
 	// --------  Router -----------
