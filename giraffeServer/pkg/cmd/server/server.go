@@ -1,13 +1,8 @@
 package main
 
 import (
-	"errors"
 	"fmt"
 	"net/http"
-	"os"
-	"path"
-	"path/filepath"
-	"strings"
 
 	"github.com/gin-gonic/gin"
 
@@ -19,8 +14,11 @@ func main() {
 	r := gin.Default()
 
 	// --------  Router -----------
+
+	r.LoadHTMLFiles("public/index.html")
 	r.GET("/", func(c *gin.Context) {
-		c.String(http.StatusOK, "Hello, Gin Server")
+		// c.String(http.StatusOK, "Hello, Gin Server")
+		c.HTML(http.StatusOK, "index.html", nil)
 	})
 
 	//解析路径参数
@@ -34,6 +32,10 @@ func main() {
 		name := c.Query("name")
 		role := c.DefaultQuery("role", "teacher")
 		c.String(http.StatusOK, "%s is %s", name, role)
+	})
+
+	r.GET("/getuser", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{"user": "ccq", "sex": "male", "age": 18})
 	})
 
 	r.POST("/form", func(c *gin.Context) {
@@ -63,6 +65,16 @@ func main() {
 		})
 	}
 
+	apiGroup := r.Group("/api")
+	{
+		apiGroup.GET("/getuser", func(c *gin.Context) {
+			c.JSON(http.StatusOK, gin.H{
+				"user": "ccq",
+				"data": "{}",
+			})
+		})
+	}
+
 	//group v1
 	v1 := r.Group("/v1")
 
@@ -79,53 +91,7 @@ func main() {
 	}
 
 	//static files
-	r.StaticFS("/public", Dir("public"))
+	r.StaticFS("/static", http.Dir("public/static"))
 
 	r.Run()
-}
-
-// An empty Dir is treated as ".".
-type Dir string
-
-// mapDirOpenError maps the provided non-nil error from opening name
-// to a possibly better non-nil error. In particular, it turns OS-specific errors
-// about opening files in non-directories into os.ErrNotExist. See Issue 18984.
-func mapDirOpenError(originalErr error, name string) error {
-	if os.IsNotExist(originalErr) || os.IsPermission(originalErr) {
-		return originalErr
-	}
-
-	parts := strings.Split(name, string(filepath.Separator))
-	for i := range parts {
-		if parts[i] == "" {
-			continue
-		}
-		fi, err := os.Stat(strings.Join(parts[:i+1], string(filepath.Separator)))
-		if err != nil {
-			return originalErr
-		}
-		if !fi.IsDir() {
-			return os.ErrNotExist
-		}
-	}
-	return originalErr
-}
-
-// Open implements FileSystem using os.Open, opening files for reading rooted
-// and relative to the directory d.
-func (d Dir) Open(name string) (http.File, error) {
-	if filepath.Separator != '/' && strings.ContainsRune(name, filepath.Separator) {
-		return nil, errors.New("http: invalid character in file path")
-	}
-	dir := string(d)
-	if dir == "" {
-		dir = "."
-	}
-	fullName := filepath.Join(dir, filepath.FromSlash(path.Clean("/"+name)))
-	fmt.Println("open file " + fullName)
-	f, err := os.Open(fullName)
-	if err != nil {
-		return nil, mapDirOpenError(err, fullName)
-	}
-	return f, nil
 }
