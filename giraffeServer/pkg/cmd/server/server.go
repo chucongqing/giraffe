@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	des := 0
+	des := 1
 	fmt.Println(des + " > " + api.Func0())
 
 	r := gin.Default()
