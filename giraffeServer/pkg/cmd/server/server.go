@@ -10,7 +10,9 @@ import (
 )
 
 func main() {
-	fmt.Println("> " + api.Func0())
+	des := 0
+	fmt.Println(des + " > " + api.Func0())
+
 	r := gin.Default()
 
 	// --------  Router -----------
