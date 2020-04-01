@@ -1,13 +1,6 @@
 package main
 
 import (
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-	"errors"
->>>>>>> 9c938b3... gin
-=======
->>>>>>> 3d6bcd4... 11
 	"fmt"
 	"net/http"
 
