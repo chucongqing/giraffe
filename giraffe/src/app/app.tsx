@@ -9,6 +9,7 @@ import G2PlotBaseChart from './components/g2plot/base-chart'
 import axios from 'axios'
 
 import {Router, Link, RouteComponentProps} from "@reach/router"
+import Parking from './container/parking';
 
 interface InvoiceProps extends RouteComponentProps {
     invoiceId? : string;
@@ -17,6 +18,7 @@ interface InvoiceProps extends RouteComponentProps {
 let Home = (props : RouteComponentProps)=> <UserInfoComp />
 let Layout = (props : RouteComponentProps)=> <Layout3 />
 
+let Park = (props:RouteComponentProps) => <Parking></Parking>
 // at url "/invoice/23"
 let Invoice = (props: InvoiceProps)=> (
     <div>
@@ -57,6 +59,10 @@ const GiraffeApp = ()=>{
                     </li>
                     <li>
                     <Link to="invoice">invoice</Link>
+                    
+                    </li>
+                    <li>
+                        <Link to="park">停车</Link>
                     </li>
                 </ul>
                
@@ -69,6 +75,7 @@ const GiraffeApp = ()=>{
             <Layout path="layout" />
             
             <Invoice path="invoice/:invoiceId" />
+            <Park path="park"></Park>
             </Router>
            
             {/* <UserInfoComp></UserInfoComp> */}

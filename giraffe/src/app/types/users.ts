@@ -1,6 +1,8 @@
 export interface UsersState{
     name : string;
-    sex: string;
+    license : string;
+    usingPark ?: boolean;
+    sex?: string;
     uid: string;
-    money:number;
+    money?:number;
 }
