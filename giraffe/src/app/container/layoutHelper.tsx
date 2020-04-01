@@ -14,7 +14,7 @@ export  function generateRandomLayout(times: number) : Layout[] {
         const i = index;
         const y = Math.ceil(Math.random() * 4) + 1
         return {
-                      x:(i*2)%12,
+            x:(i*2)%12,
             y:Math.floor(1/6)*y,
             w:2,
             h:y,
